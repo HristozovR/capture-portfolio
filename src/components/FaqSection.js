@@ -1,57 +1,63 @@
 // Import Styles Components
 import styled from 'styled-components';
 import { About } from '../styles';
+import Toggle from './Toggle';
+
+import { LayoutGroup } from 'framer-motion';
+import { useScroll } from './useScroll';
+import { scrollReveal } from '../animation';
 
 const FaqSection = () => {
+  const [element, controls] = useScroll();
+
   return (
-    <Faq>
+    <Faq
+      variants={scrollReveal}
+      animate={controls}
+      ref={element}
+      initial='hidden'
+    >
       <h2>
         Any questions <span>FAQ</span>
       </h2>
-      <div className='question'>
-        <h4>How DO i Start?</h4>
-        <div className='answer'>
-          <p>Lorem ipsum dolor sit amet.</p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti,
-            reiciendis.
-          </p>
-        </div>
-        <div className='faq-line'></div>
-      </div>
-      <div className='question'>
-        <h4>Daily Schedule</h4>
-        <div className='answer'>
-          <p>Lorem ipsum dolor sit amet.</p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti,
-            reiciendis.
-          </p>
-        </div>
-        <div className='faq-line'></div>
-      </div>
-      <div className='question'>
-        <h4>Different Payment Methods</h4>
-        <div className='answer'>
-          <p>Lorem ipsum dolor sit amet.</p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti,
-            reiciendis.
-          </p>
-        </div>
-        <div className='faq-line'></div>
-      </div>
-      <div className='question'>
-        <h4>What Product do you offer</h4>
-        <div className='answer'>
-          <p>Lorem ipsum dolor sit amet.</p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti,
-            reiciendis.
-          </p>
-        </div>
-        <div className='faq-line'></div>
-      </div>
+      <LayoutGroup>
+        <Toggle title='How DO i Start?'>
+          <div className='answer'>
+            <p>Lorem ipsum dolor sit amet.</p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+              Deleniti, reiciendis.
+            </p>
+          </div>
+        </Toggle>
+        <Toggle title='Daily Schedule'>
+          <div className='answer'>
+            <p>Lorem ipsum dolor sit amet.</p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+              Deleniti, reiciendis.
+            </p>
+          </div>
+        </Toggle>
+        <Toggle title='Different Payment Methods'>
+          <div className='answer'>
+            <p>Lorem ipsum dolor sit amet.</p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+              Deleniti, reiciendis.
+            </p>
+          </div>
+        </Toggle>
+        <Toggle title='What Product do you offer'>
+          <div className='answer'>
+            <p>Lorem ipsum dolor sit amet.</p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+              Deleniti, reiciendis.
+            </p>
+          </div>
+        </Toggle>
+      </LayoutGroup>
     </Faq>
   );
 };
